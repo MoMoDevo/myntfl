@@ -1,6 +1,10 @@
+import { ClerkProvider } from '@clerk/nextjs'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { SheetDemo } from '@/components/ui/SheetComponent'
+import Sidebar from '@/components/Sidebar'
+import Link from 'next/link'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +20,29 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+        <ClerkProvider>
+      <body className={inter.className}>
+       <div className="h-screen w-full bg-opacity-70">
+        <div className="h-full mx-auto xl:px-30">
+          <div className="grid grid-cols-4 h-full overflow-y-auto overflow-x-hidden">
+            <Sidebar/>
+            <div className="border-neutral-800 border-[1px] lg:col-span-2 col-span-3">
+              
+
+          
+
+       
+
+
+        {children}
+        </div>
+          </div>
+        </div>
+
+</div>
+
+        </body>
+        </ClerkProvider>
     </html>
   )
 }
